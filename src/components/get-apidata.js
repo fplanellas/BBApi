@@ -1,4 +1,5 @@
 import { LitElement, html } from 'lit-element';
+import './components/get-apidata';
 
 export class GetApidata extends LitElement {
 
@@ -13,13 +14,16 @@ export class GetApidata extends LitElement {
         this.getData();
     }
 
-    /*render() {
+    render() {
         return html`
-        
+            <div class="buscador">
+                <input id="searchId" type="search" name="buscar" value="">         
+                <input @click="${this.getData}"type="submit" value="Buscar">
+            </div>
         `;
-    }*/
+    }
 
-    _sedData(data) {
+    _sedData(data) {       
         this.dispatchEvent(new CustomEvent('ApiData', {
             bubbles: true,
             composed: true,
@@ -35,7 +39,18 @@ export class GetApidata extends LitElement {
             if(response.ok) return response.json();
             return Promise.reject(response);
         })
-        .then((data) => { this._sedData(data); })
+
+        .then((dataC) => { 
+            let itemSearched = this.shadowRoot.getElementById('searchId').value;
+            let data = dataC.filter(data => {
+                if (data.name.indexOf(itemSearched) != -1) {
+                    return true;
+                }
+                return false;
+            });
+
+            this._sedData(data);
+         })
         .catch((error) => { console.warn('Something went wrong', error); });
     }
 }
