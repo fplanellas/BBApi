@@ -11,17 +11,31 @@ export class FopcBreakingBad extends LitElement {
                 font-family: sans-serif;
             }
 
+            h1 {
+                display: flex;
+                justify-content: center;
+                margin-bottom: 45px;
+            }
+
+            h1 img {
+                width: 150px;
+            }
+
             article {
                 display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 1rem;
+                grid-auto-flow: dense;
+                grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
                 text-align: center;
                 padding: 15px;
+                padding-top:0;
+                margin: 0 130px;
                 position: relative;
             }
 
             .character-container{
                 padding: 10px;
-                height: 250px;
+                height: 220px;
                 overflow: hidden;
             }
 
@@ -49,8 +63,6 @@ export class FopcBreakingBad extends LitElement {
                 font-size: 20px;
                 margin:0;
             }
-
-            
 
             span.hidden {
                 width: auto;
@@ -83,12 +95,16 @@ export class FopcBreakingBad extends LitElement {
 
             .character-container.character-detail{
                 position: absolute;
+                right: 0;
+                left: 0;
+                margin: auto;
+                top: -60px;
                 background: transparent);
                 opacity: 0;
                 transition: opacity 500ms;
-                width:100%;
-                height:550px; 
-                padding-right: 40px;   
+                width:90%;
+                height:580px; 
+                padding: 15px;   
                 box-sizing: border-box;          
             }
 
@@ -143,7 +159,7 @@ export class FopcBreakingBad extends LitElement {
 
             .character-container .iconClose {
                 position: absolute;
-                right:50px;
+                right: 10px;
                 top: 10px;
                 cursor: pointer;
                 z-index: 100;
@@ -219,8 +235,7 @@ export class FopcBreakingBad extends LitElement {
 
     render() {
         return html`
-            <h1>Breaking bad</h1>
-            
+            <h1><img src="./img/pngegg.png"></h1>
             <div class="pagination" id="paginationId"></div>
             <get-apidata url="${this.url}"  ></get-apidata>  
             <article id="BBContent">                
