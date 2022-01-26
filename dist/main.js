@@ -139,7 +139,7 @@ console.warn("The main 'lit-element' module entrypoint is deprecated. Please upd
                 position: absolute;
                 bottom:0;
                 margin:0 -10px;
-                padding: 8px 0;             
+                padding: 1px 0 10px;             
             }
 
             .character-container p {
@@ -163,8 +163,8 @@ console.warn("The main 'lit-element' module entrypoint is deprecated. Please upd
                 background: transparent);
                 opacity: 0;
                 transition: opacity 500ms;
-                width:90%;
-                height:580px; 
+                width:97%;
+                height:590px; 
                 padding: 15px;   
                 box-sizing: border-box;          
             }
